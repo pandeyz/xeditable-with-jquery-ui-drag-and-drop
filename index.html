@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"/>
+	<link href="https://vitalets.github.io/x-editable/assets/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+	<link href="https://vitalets.github.io/x-editable/assets/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>
+	<link href="https://vitalets.github.io/x-editable/assets/x-editable/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+	<link href="https://vitalets.github.io/x-editable/assets/x-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.css" rel="stylesheet"/>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<script src="https://vitalets.github.io/x-editable/assets/bootstrap/js/bootstrap.js"></script>
+	<script src="https://vitalets.github.io/x-editable/assets/x-editable/bootstrap-editable/js/bootstrap-editable.js"></script>
+	<script src="https://vitalets.github.io/x-editable/assets/x-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/wysihtml5-0.3.0.min.js"></script>
+	<script src="https://vitalets.github.io/x-editable/assets/x-editable/inputs-ext/wysihtml5/bootstrap-wysihtml5-0.0.2/bootstrap-wysihtml5-0.0.2.min.js"></script>
+	<script src="https://vitalets.github.io/x-editable/assets/x-editable/inputs-ext/wysihtml5/wysihtml5-0.0.2.js"></script>
+
+</head>
+
+<body>
+	
+    <div>
+
+        <p style="clear:both;"><input type="button" style="float:left" id="btClickMe" value="Create more draggable DIV's" /></p>
+        <div id="divContainer" background="a.png"></div>
+
+        <script>
+
+        	var counter = 1;
+	        var element_pos = 300;
+
+	        $(document).ready(function()
+	        {
+
+	        	$.fn.editable.defaults.mode = 'popup';
+
+	        	$('#btClickMe').click(function()
+	        	{
+
+	        		var dynamic_div = $(document.createElement('div')).css({ border: '1px dashed', position: 'absolute', left: element_pos, top: $('#divContainer').height() + 300, width: '180', height: '100', padding: '3', margin: '0' });
+
+	        		element_pos = element_pos + 25;
+
+	        		$(dynamic_div).resizable().draggable().append('Click here to enter Text').appendTo("#divContainer");
+
+	        		$(dynamic_div).editable({
+	        			type: 'wysihtml5',
+    					pk: 1,
+    					row: 3,
+    					placement: 'bottom'
+	        		});
+	        	});
+
+	        });
+        </script>
+
+    </div>
+
+</body>
+
+</html>
